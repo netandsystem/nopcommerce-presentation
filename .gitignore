@@ -202,3 +202,4 @@ packages/*
 Tests/Nop.Tests/Connections.resx
 deploy
 /Nop.Web/App_Data/plugins.json
+Nop.Web/wwwroot/images/logos/*
