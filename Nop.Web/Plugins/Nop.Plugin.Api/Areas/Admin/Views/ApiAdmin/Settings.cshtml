@@ -46,10 +46,6 @@
 
                             @foreach (var pair in @Model.EnabledRolesDic)
                             {
-                                @* <div class="col-md-3">
-                                    <nop-override-store-checkbox asp-for="@Model.EnabledRolesDic[pair.Key]" asp-input="@Model.EnabledRolesDic[pair.Key]" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
-                                    <nop-label asp-for="@pair.Key" />
-                                </div> *@
                                 <div class="col-md-3">
                                     <label>
                                         <input type="checkbox" asp-for="@Model.EnabledRolesDic[pair.Key]" />
