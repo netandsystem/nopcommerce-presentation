@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;
@@ -645,6 +646,33 @@ namespace Nop.Web.Areas.Admin.Factories
             return model;
         }
 
+        private async Task<List<SelectListItem>> PrepareAvailableSellersAsync()
+        {
+            var sellerRole = await _customerService.GetCustomerRoleBySystemNameAsync("Seller");
+            int[] arr = { sellerRole.Id };
+            var sellers = await _customerService.GetAllCustomersAsync(customerRoleIds: arr);
+
+            var result = new List<SelectListItem>();
+
+            //result.Add(new SelectListItem
+            //{
+            //    Text = "Sin Vendedor",
+            //    Value = ""
+            //});
+
+            //clone the list to ensure that "selected" property is not set
+            foreach (var item in sellers)
+            {
+                result.Add(new SelectListItem
+                {
+                    Text = item.Username + " - " + await _customerService.GetCustomerFullNameAsync(item),
+                    Value = item.Id.ToString()
+                });
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Prepare customer model
         /// </summary>
@@ -741,6 +769,15 @@ namespace Nop.Web.Areas.Admin.Factories
                 PrepareCustomerActivityLogSearchModel(model.CustomerActivityLogSearchModel, customer);
                 PrepareCustomerBackInStockSubscriptionSearchModel(model.CustomerBackInStockSubscriptionSearchModel, customer);
                 await PrepareCustomerAssociatedExternalAuthRecordsSearchModelAsync(model.CustomerAssociatedExternalAuthRecordsSearchModel, customer);
+
+                model.SellerIds = null;
+                int SellerId = customer.SellerId ?? 0;
+
+                if (customer.SellerId.HasValue)
+                {
+                   model.SellerIds = new List<int>() { SellerId };
+                }
+
             }
             else
             {
@@ -798,6 +835,10 @@ namespace Nop.Web.Areas.Admin.Factories
 
             //prepare available time zones
             await _baseAdminModelFactory.PrepareTimeZonesAsync(model.AvailableTimeZones, false);
+
+            //prepare available sellers
+            model.AvailableSellers = await PrepareAvailableSellersAsync();
+
 
             //prepare available countries and states
             if (_customerSettings.CountryEnabled)

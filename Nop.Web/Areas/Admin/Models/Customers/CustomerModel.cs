@@ -38,6 +38,7 @@ namespace Nop.Web.Areas.Admin.Models.Customers
             CustomerActivityLogSearchModel = new CustomerActivityLogSearchModel();
             CustomerBackInStockSubscriptionSearchModel = new CustomerBackInStockSubscriptionSearchModel();
             CustomerAssociatedExternalAuthRecordsSearchModel = new CustomerAssociatedExternalAuthRecordsSearchModel();
+            AvailableSellers = new List<SelectListItem>();
         }
 
         #endregion
@@ -251,6 +252,13 @@ namespace Nop.Web.Areas.Admin.Models.Customers
         public CustomerBackInStockSubscriptionSearchModel CustomerBackInStockSubscriptionSearchModel { get; set; }
 
         public CustomerAssociatedExternalAuthRecordsSearchModel CustomerAssociatedExternalAuthRecordsSearchModel { get; set; }
+
+        #nullable enable
+
+        [NopResourceDisplayName("Admin.Customers.Customers.Fields.Seller")]
+        public List<int>? SellerIds { get; set; }
+
+        public IList<SelectListItem> AvailableSellers { get; set; }
 
         #endregion
 

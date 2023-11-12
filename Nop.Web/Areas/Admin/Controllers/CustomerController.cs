@@ -367,6 +367,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 customer.CreatedOnUtc = DateTime.UtcNow;
                 customer.LastActivityDateUtc = DateTime.UtcNow;
                 customer.RegisteredInStoreId = currentStore.Id;
+                customer.SellerId = model.SellerIds?.First();
 
                 await _customerService.InsertCustomerAsync(customer);
 
@@ -570,6 +571,7 @@ namespace Nop.Web.Areas.Admin.Controllers
                 {
                     customer.AdminComment = model.AdminComment;
                     customer.IsTaxExempt = model.IsTaxExempt;
+                    customer.SellerId = model.SellerIds?.First();
 
                     //prevent deactivation of the last active administrator
                     if (!await _customerService.IsAdminAsync(customer) || model.Active || await SecondAdminAccountExistsAsync(customer))

@@ -368,6 +368,16 @@
             <em>@T("Admin.Customers.Customers.VendorShouldBeInVendorsRole")</em>
         </div>
     </div>
+
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="SellerIds" />
+        </div>
+        <div class="col-md-9">
+            <nop-select asp-for="SellerIds" asp-items="Model.AvailableSellers" asp-multiple="true"/>
+            <span asp-validation-for="SellerIds"></span>
+        </div>
+    </div>
     @if (Model.AffiliateId > 0)
     {
         <div class="form-group row">
