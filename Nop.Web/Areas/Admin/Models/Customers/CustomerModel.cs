@@ -260,6 +260,8 @@ namespace Nop.Web.Areas.Admin.Models.Customers
 
         public IList<SelectListItem> AvailableSellers { get; set; }
 
+        #nullable disable
+
         #endregion
 
         #region Nested classes
