@@ -951,6 +951,13 @@ namespace Nop.Web.Areas.Admin.Controllers
                 await _settingService.SaveSettingAsync(orderSettings, x => x.DeactivateGiftCardsAfterDeletingOrder, 0, false);
                 await _settingService.SaveSettingAsync(orderSettings, x => x.CompleteOrderWhenDelivered, 0, false);
 
+                //#region NAS Code
+
+                await _settingService.SaveSettingOverridablePerStoreAsync(orderSettings, x => x.MaxItemsPerOrder, model.MaxItemsPerOrder_OverrideForStore, storeScope, false);
+                await _settingService.SaveSettingAsync(orderSettings, x => x.MaxItemsPerOrder, 0, false);
+
+                //#endregion
+
                 //now clear settings cache
                 await _settingService.ClearCacheAsync();
 

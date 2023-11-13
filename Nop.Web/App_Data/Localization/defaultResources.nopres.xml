@@ -8184,6 +8184,14 @@
   <LocaleResource Name="Admin.Configuration.Settings.Order.TermsOfServiceOnShoppingCartPage.Hint">
     <Value>Require customers to accept or decline terms of service before processing the order (on the shopping cart page).</Value>
   </LocaleResource>
+	<!--#region NAS Code-->
+	<LocaleResource Name="Admin.Configuration.Settings.Order.MaxItemsPerOrder">
+		<Value>10</Value>
+	</LocaleResource>
+    <LocaleResource Name="Admin.Configuration.Settings.Order.MaxItemsPerOrder.Hint">
+	    <Value>Obliga a que las orden no puedan aceptar más de cierta cantidad de productos</Value>
+    </LocaleResource>
+	<!--#endregion-->
   <LocaleResource Name="Admin.Configuration.Settings.ProductEditor.ACL">
     <Value>Customer roles</Value>
   </LocaleResource>

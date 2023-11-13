@@ -1297,8 +1297,11 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
                 .ForMember(model => model.ReturnRequestsAllowFiles_OverrideForStore, options => options.Ignore())
                 .ForMember(model => model.ReturnRequestsEnabled_OverrideForStore, options => options.Ignore())
                 .ForMember(model => model.TermsOfServiceOnOrderConfirmPage_OverrideForStore, options => options.Ignore())
+                // #region NAS Code
                 .ForMember(model => model.TermsOfServiceOnShoppingCartPage_OverrideForStore, options => options.Ignore())
-                .ForMember(model => model.PrimaryStoreCurrencyCode, options => options.Ignore());
+                .ForMember(model => model.MaxItemsPerOrder_OverrideForStore, options => options.Ignore());
+                // #endregion
+
             CreateMap<OrderSettingsModel, OrderSettings>()
                 .ForMember(settings => settings.GeneratePdfInvoiceInCustomerLanguage, options => options.Ignore())
                 .ForMember(settings => settings.MinimumOrderPlacementInterval, options => options.Ignore())

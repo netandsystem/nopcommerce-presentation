@@ -78,4 +78,17 @@
             <span asp-validation-for="AllowAdminsToBuyCallForPriceProducts"></span>
         </div>
     </div>
+
+    @* #region NAS Code *@
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-override-store-checkbox asp-for="MaxItemsPerOrder_OverrideForStore" asp-input="MaxItemsPerOrder" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+            <nop-label asp-for="MaxItemsPerOrder" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="MaxItemsPerOrder" />
+            <span asp-validation-for="MaxItemsPerOrder"></span>
+        </div>
+    </div>
+    @* #endregion *@
 </div>

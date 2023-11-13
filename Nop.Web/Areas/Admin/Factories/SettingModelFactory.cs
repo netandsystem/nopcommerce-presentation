@@ -1348,7 +1348,11 @@ namespace Nop.Web.Areas.Admin.Factories
                 model.CustomOrderNumberMask_OverrideForStore = await _settingService.SettingExistsAsync(orderSettings, x => x.CustomOrderNumberMask, storeId);
                 model.ExportWithProducts_OverrideForStore = await _settingService.SettingExistsAsync(orderSettings, x => x.ExportWithProducts, storeId);
                 model.AllowAdminsToBuyCallForPriceProducts_OverrideForStore = await _settingService.SettingExistsAsync(orderSettings, x => x.AllowAdminsToBuyCallForPriceProducts, storeId);
+
+                // #region NAS Code
                 model.DeleteGiftCardUsageHistory_OverrideForStore = await _settingService.SettingExistsAsync(orderSettings, x => x.DeleteGiftCardUsageHistory, storeId);
+                model.MaxItemsPerOrder_OverrideForStore = await _settingService.SettingExistsAsync(orderSettings, x => x.MaxItemsPerOrder, storeId);
+                //#endregion
             }
 
             //prepare nested search models

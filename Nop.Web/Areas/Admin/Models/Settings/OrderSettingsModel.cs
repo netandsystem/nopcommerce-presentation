@@ -145,5 +145,13 @@ namespace Nop.Web.Areas.Admin.Models.Settings
         public ReturnRequestActionSearchModel ReturnRequestActionSearchModel { get; set; }
 
         #endregion
+
+        #region NAS Code
+
+        [NopResourceDisplayName("Admin.Configuration.Settings.Order.MaxItemsPerOrder")]
+        public int MaxItemsPerOrder { get; set; }
+        public bool MaxItemsPerOrder_OverrideForStore { get; set; }
+
+        #endregion
     }
 }
