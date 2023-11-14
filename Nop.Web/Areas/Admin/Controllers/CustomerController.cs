@@ -463,6 +463,10 @@ namespace Nop.Web.Areas.Admin.Controllers
                     await _customerService.AddCustomerRoleMappingAsync(new CustomerCustomerRoleMapping { CustomerId = customer.Id, CustomerRoleId = customerRole.Id });
                 }
 
+                //#region NaS Code
+                customer.UpdatedOnUtc = DateTime.UtcNow;
+                //#end region
+
                 await _customerService.UpdateCustomerAsync(customer);
 
                 //ensure that a customer with a vendor associated is not in "Administrators" role
@@ -470,6 +474,10 @@ namespace Nop.Web.Areas.Admin.Controllers
                 if (await _customerService.IsAdminAsync(customer) && customer.VendorId > 0)
                 {
                     customer.VendorId = 0;
+
+                    //#region NaS Code
+                    customer.UpdatedOnUtc = DateTime.UtcNow;
+                    //#end region
                     await _customerService.UpdateCustomerAsync(customer);
 
                     _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminCouldNotbeVendor"));
@@ -723,13 +731,22 @@ namespace Nop.Web.Areas.Admin.Controllers
                         }
                     }
 
+                    //#region NaS Code
+                    customer.UpdatedOnUtc = DateTime.UtcNow;
+                    //#end region
+
                     await _customerService.UpdateCustomerAsync(customer);
+
 
                     //ensure that a customer with a vendor associated is not in "Administrators" role
                     //otherwise, he won't have access to the other functionality in admin area
                     if (await _customerService.IsAdminAsync(customer) && customer.VendorId > 0)
                     {
                         customer.VendorId = 0;
+
+                        //#region NaS Code
+                        customer.UpdatedOnUtc = DateTime.UtcNow;
+                        //#end region
                         await _customerService.UpdateCustomerAsync(customer);
                         _notificationService.ErrorNotification(await _localizationService.GetResourceAsync("Admin.Customers.Customers.AdminCouldNotbeVendor"));
                     }
@@ -853,6 +870,9 @@ namespace Nop.Web.Areas.Admin.Controllers
                 return RedirectToAction("List");
 
             customer.AffiliateId = 0;
+            //#region NaS Code
+            customer.UpdatedOnUtc = DateTime.UtcNow;
+            //#end region
             await _customerService.UpdateCustomerAsync(customer);
 
             return RedirectToAction("Edit", new { id = customer.Id });
@@ -968,6 +988,9 @@ namespace Nop.Web.Areas.Admin.Controllers
 
             //ensure login is not required
             customer.RequireReLogin = false;
+            //#region NaS Code
+            customer.UpdatedOnUtc = DateTime.UtcNow;
+            //#end region
             await _customerService.UpdateCustomerAsync(customer);
             await _genericAttributeService.SaveAttributeAsync<int?>(currentCustomer, NopCustomerDefaults.ImpersonatedCustomerIdAttribute, customer.Id);
 
@@ -1206,6 +1229,11 @@ namespace Nop.Web.Areas.Admin.Controllers
                 return Content("No address found with the specified id");
 
             await _customerService.RemoveCustomerAddressAsync(customer, address);
+
+            //#region NaS Code
+            customer.UpdatedOnUtc = DateTime.UtcNow;
+            //#end region
+
             await _customerService.UpdateCustomerAsync(customer);
 
             //now delete the address record
