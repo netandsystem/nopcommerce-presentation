@@ -11588,6 +11588,12 @@
   <LocaleResource Name="Admin.Customers.Customers.Fields.RegisteredInStore.Hint">
     <Value>Indicating in which store the customer is registered</Value>
   </LocaleResource>
+    <LocaleResource Name="Admin.Customers.Customers.Fields.Seller">
+	    <Value>Vendedor</Value>
+    </LocaleResource>
+    <LocaleResource Name="Admin.Customers.Customers.Fields.Seller.Hint">
+	    <Value>Vendedor asociado a este cliente</Value>
+    </LocaleResource>
   <LocaleResource Name="Admin.Customers.Customers.Fields.StateProvince">
     <Value>State / province</Value>
   </LocaleResource>
