@@ -203,4 +203,12 @@ Tests/Nop.Tests/Connections.resx
 deploy
 /Nop.Web/App_Data/plugins.json
 Nop.Web/wwwroot/images/logos/*
-Nop.Web/wwwroot/images/siclab_images/*
+Nop.Web/wwwroot/images/*
+!Nop.Web/wwwroot/images/flags/*
+!Nop.Web/wwwroot/images/samples/*
+!Nop.Web/wwwroot/images/thumbs/*
+!Nop.Web/wwwroot/images/uploaded/*
+!Nop.Web/wwwroot/images/default-image.png
+!Nop.Web/wwwroot/images/default-image.gif
+!Nop.Web/wwwroot/images/default-avatar.jpg
+!Nop.Web/wwwroot/images/default-avatar.png
