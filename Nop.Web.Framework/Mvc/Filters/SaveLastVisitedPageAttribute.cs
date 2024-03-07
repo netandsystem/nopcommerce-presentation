@@ -111,14 +111,14 @@ namespace Nop.Web.Framework.Mvc.Filters
                         Key = NopCustomerDefaults.LastVisitedPageAttribute,
                         KeyGroup = nameof(Customer),
                         Value = pageUrl,
-                        CreatedOrUpdatedDateUTC = DateTime.UtcNow
+                        UpdatedOnUtc = DateTime.UtcNow
                     }, false);
                 }
                 else if (!pageUrl.Equals(previousPageAttribute.Value, StringComparison.InvariantCultureIgnoreCase))
                 {
                     //update without event notification
                     previousPageAttribute.Value = pageUrl;
-                    previousPageAttribute.CreatedOrUpdatedDateUTC = DateTime.UtcNow;
+                    previousPageAttribute.UpdatedOnUtc = DateTime.UtcNow;
 
                     await _genericAttributeRepository.UpdateAsync(previousPageAttribute, false);
                 }
