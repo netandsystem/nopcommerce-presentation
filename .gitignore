@@ -212,3 +212,4 @@ Nop.Web/wwwroot/images/*
 !Nop.Web/wwwroot/images/default-image.gif
 !Nop.Web/wwwroot/images/default-avatar.jpg
 !Nop.Web/wwwroot/images/default-avatar.png
+Nop.Web/wwwroot/app-builds/**/*.apk
