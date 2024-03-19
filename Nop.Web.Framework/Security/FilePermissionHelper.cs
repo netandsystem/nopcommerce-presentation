@@ -274,7 +274,6 @@ namespace Nop.Web.Framework.Security
                 fileProvider.Combine(rootDir, @"wwwroot\images"),
                 fileProvider.Combine(rootDir, @"wwwroot\images\thumbs"),
                 fileProvider.Combine(rootDir, @"wwwroot\images\uploaded"),
-                fileProvider.Combine(rootDir, @"wwwroot\app"),
             };
 
             return dirsToCheck;
