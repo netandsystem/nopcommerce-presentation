@@ -111,6 +111,8 @@ namespace Nop.Web.Infrastructure
 
             //helpers classes
             services.AddScoped<ITinyMceHelper, TinyMceHelper>();
+
+            services.AddScoped<INopFileProvider, NopFileProvider>();
         }
 
         // <summary>
